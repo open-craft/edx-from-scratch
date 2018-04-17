@@ -1,0 +1,138 @@
+{
+    "CELERY_BROKER_PASSWORD": "celery", 
+    "CELERY_BROKER_USER": "celery", 
+    "CONTENTSTORE": {
+        "ADDITIONAL_OPTIONS": {}, 
+        "DOC_STORE_CONFIG": {
+            "collection": "modulestore", 
+            "connectTimeoutMS": 2000, 
+            "db": "edxapp", 
+            "host": "services", 
+            "password": "password", 
+            "port": 27017, 
+            "read_preference": "SECONDARY_PREFERRED", 
+            "replicaSet": "", 
+            "socketTimeoutMS": 3000, 
+            "ssl": false, 
+            "user": "edxapp"
+        }, 
+        "ENGINE": "xmodule.contentstore.mongo.MongoContentStore", 
+        "OPTIONS": {
+            "db": "edxapp", 
+            "host": "services", 
+            "password": "password", 
+            "port": 27017, 
+            "ssl": false, 
+            "user": "edxapp"
+        }
+    }, 
+    "DATABASES": {
+        "default": {
+            "ATOMIC_REQUESTS": true, 
+            "CONN_MAX_AGE": 0, 
+            "ENGINE": "django.db.backends.mysql", 
+            "HOST": "services", 
+            "NAME": "edxapp", 
+            "OPTIONS": {}, 
+            "PASSWORD": "password", 
+            "PORT": "3306", 
+            "USER": "edxapp001"
+        }, 
+        "read_replica": {
+            "CONN_MAX_AGE": 0, 
+            "ENGINE": "django.db.backends.mysql", 
+            "HOST": "services", 
+            "NAME": "edxapp", 
+            "OPTIONS": {}, 
+            "PASSWORD": "password", 
+            "PORT": "3306", 
+            "USER": "edxapp001"
+        }, 
+        "student_module_history": {
+            "CONN_MAX_AGE": 0, 
+            "ENGINE": "django.db.backends.mysql", 
+            "HOST": "services", 
+            "NAME": "edxapp_csmh", 
+            "OPTIONS": {}, 
+            "PASSWORD": "password", 
+            "PORT": "3306", 
+            "USER": "edxapp001"
+        }
+    }, 
+    "DEFAULT_FILE_STORAGE": "django.core.files.storage.FileSystemStorage", 
+    "DJFS": {
+        "directory_root": "/edx/var/edxapp/django-pyfs/static/django-pyfs", 
+        "type": "osfs", 
+        "url_root": "/static/django-pyfs"
+    }, 
+    "DOC_STORE_CONFIG": {
+        "collection": "modulestore", 
+        "connectTimeoutMS": 2000, 
+        "db": "edxapp", 
+        "host": "services", 
+        "password": "password", 
+        "port": 27017, 
+        "read_preference": "SECONDARY_PREFERRED", 
+        "replicaSet": "", 
+        "socketTimeoutMS": 3000, 
+        "ssl": false, 
+        "user": "edxapp"
+    }, 
+    "EDX_API_KEY": "secret_api_key", 
+    "ENTERPRISE_REPORTING_SECRET": "0000000000000000", 
+    "MODULESTORE": {
+        "default": {
+            "ENGINE": "xmodule.modulestore.mixed.MixedModuleStore", 
+            "OPTIONS": {
+                "mappings": {}, 
+                "stores": [
+                    {
+                        "DOC_STORE_CONFIG": {
+                            "collection": "modulestore", 
+                            "connectTimeoutMS": 2000, 
+                            "db": "edxapp", 
+                            "host": "services", 
+                            "password": "password", 
+                            "port": 27017, 
+                            "read_preference": "SECONDARY_PREFERRED", 
+                            "replicaSet": "", 
+                            "socketTimeoutMS": 3000, 
+                            "ssl": false, 
+                            "user": "edxapp"
+                        }, 
+                        "ENGINE": "xmodule.modulestore.split_mongo.split_draft.DraftVersioningModuleStore", 
+                        "NAME": "split", 
+                        "OPTIONS": {
+                            "default_class": "xmodule.hidden_module.HiddenDescriptor", 
+                            "fs_root": "/edx/var/edxapp/data", 
+                            "render_template": "edxmako.shortcuts.render_to_string"
+                        }
+                    }, 
+                    {
+                        "DOC_STORE_CONFIG": {
+                            "collection": "modulestore", 
+                            "connectTimeoutMS": 2000, 
+                            "db": "edxapp", 
+                            "host": "services", 
+                            "password": "password", 
+                            "port": 27017, 
+                            "read_preference": "PRIMARY", 
+                            "replicaSet": "", 
+                            "socketTimeoutMS": 3000, 
+                            "ssl": false, 
+                            "user": "edxapp"
+                        }, 
+                        "ENGINE": "xmodule.modulestore.mongo.DraftMongoModuleStore", 
+                        "NAME": "draft", 
+                        "OPTIONS": {
+                            "default_class": "xmodule.hidden_module.HiddenDescriptor", 
+                            "fs_root": "/edx/var/edxapp/data", 
+                            "render_template": "edxmako.shortcuts.render_to_string"
+                        }
+                    }
+                ]
+            }
+        }
+    }, 
+    "SECRET_KEY": "django_secret_key", 
+}
