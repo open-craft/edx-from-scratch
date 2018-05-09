@@ -11,12 +11,7 @@ cd edx-platform
 # Install Python requirements in virtualenv
 virtualenv ~/venvs/edxapp
 . ~/venvs/edxapp/bin/activate
-pip install -r requirements/edx/django.txt
-pip install -r requirements/edx/pre.txt
 pip install -r requirements/edx/base.txt
-pip install -r requirements/edx/github.txt
-pip install -r requirements/edx/local.txt
-pip install -r requirements/edx/post.txt
 
 # Install Node requirements in nodeenv
 ~/venvs/edxapp/bin/nodeenv ../nodeenvs/edxapp --node=8.9.3 --prebuilt --force
